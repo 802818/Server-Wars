@@ -1,0 +1,33 @@
+<html>
+<head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body style="text-align: center;">
+    <h1>SERVER WARS!</h1>   
+    <label for="videoGame">OUR SERVER IS UNDER ATTACK! <br> WE MUST WORK TOGETHER TO SAVE THE SERVER FROM THE MEME MENACE!!!</label>
+    <br>
+    <img src="Assets/derpFace1.png" style= "width: 160px; height:200px;">
+    <br>
+    <img src="Assets/Stick Body.png" style= "width: 500px; height: 600px;">
+    <br>
+    <button>SPAM TO ATTACK!</button>
+    <br>
+    <h1 id="returnTxt"></h1>
+<script>
+    var tick;
+    $("button").click(function() {
+        axios.post('/answer',{
+            "videoGame":$("select[name='videoGame']").val()
+        })
+        .then(function(response) {
+            console.log(response);
+            $("#returnTxt").text(response.data);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    });
+</script>
+</body>
+</html>
